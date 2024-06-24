@@ -1,10 +1,19 @@
-# Mudgee Region NSW, Change Detection 2004 to 2023
+# Hunter Estuary KBA, New South Wales
+
+BirdLife Australia Key Biodiversity Area (KBA) Change Detection Report, September 2003 – September 2023
+
+Prepared for [BirdLife Australia](https://birdlife.org.au/) by [Michael Dear](https://mjdear68.github.io/portfolio/), June 2024
 
 ## Objective
-To quantify the changes in land cover in the Mudgee region, NSW for the period Jan 2005 to Jan 2024.
+To quantify changes in land cover in the Hunter Estuary KBA, NSW for the period Sep 2003 2005 to Sep 2023.
 
 ## Method
-Landsat satellite data was obtained from Digital Earth Australia's Open Data Cube for one date in each of September and December for 2004 and 2023. Each $100m×100m=1ha$ plot in the study area was represented by one pixel in the dataset. The two dates for each year were averaged to form RGB, NIR and NDVI datasets. True-colour (RGB) and NDVI images of the study area and its surrounds were plotted and reviewed. A land cover classification was developed using NDVI thresholds, from which class change matrices and a class change map were produced. 
+The study area was developed by applying a 1000 metre exterior buffer to the KBA. A bi-temporal pair of Landsat 8 satellite images based on the mean of two dates in September 2003 and two dates in September 2023 was obtained from [Digital Earth Australia's](https://www.dea.ga.gov.au/) Open Data. Each 30m×30m=900m^2 in the study area was represented by one pixel in the dataset. The dataset included the red, green, blue, near-infrared, shortwave infrared 1, and shortwave infrared 2 bands, plus the NDVI, NBR, and NDWI indices. A classification with the classes No Data, Water, Developed, Green Grass, Brown Grass, Swamp, and Wooded was established. 
+
+Colour-composite and NDVI images were used to develop training and test sets for each of the two dates. Four different classifications for each date were made using supervised machine learning algorithms. The algorithms were random forest (RF) and support vector machine (SVM) with three different kernels (linear, polynomial, and radial basis function (RBF)). The models were trained on 429 samples and tested on 107 samples in each class for each date. This represented an 80:20 split of the candidate sample dataset. A 3x3 sliding window modal filter was applied to the classifications to reduce noise. 
+
+The four classifications were compared visually using QGIS and high-resolution imagery obtained from the [NSW Historical Imagery Viewer](https://portal.spatial.nsw.gov.au/portal/apps/webappviewer/index.html?id=f7c215b873864d44bccddda8075238cb) and Google Earth. It was determined that the SVM with a linear kernel represented the most accurate classification when applied to the whole study area. Post-classification analysis was applied to the classifications for the two dates to establish class change statistics.
+ 
 
 ## Usage
 1. Clone the repository to the [Digital Earth Australia (DEA) Sandbox](https://app.sandbox.dea.ga.gov.au/hub/login?next=%2Fhub%2F)
